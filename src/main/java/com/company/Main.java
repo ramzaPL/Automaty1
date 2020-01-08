@@ -66,6 +66,7 @@ public class Main {
              driver.findElement(By.id("check1")).click();
 
         driver.navigate().back();*/
+    // $$$$$$$$$$$$$$$$$$$ opis dodany z pracy //////////////////////////
         czekaj.until(ExpectedConditions.presenceOfElementLocated(By.id("basic_example"))).click();
         //Radio Buttons Demo
             czekaj.until(ExpectedConditions.presenceOfElementLocated(By.linkText("Radio Buttons Demo"))).click();
