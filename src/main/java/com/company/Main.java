@@ -67,6 +67,7 @@ public class Main {
 
         driver.navigate().back();*/
     // $$$$$$$$$$$$$$$$$$$ opis dodany z pracy //////////////////////////
+        /// a ten z domu
         czekaj.until(ExpectedConditions.presenceOfElementLocated(By.id("basic_example"))).click();
         //Radio Buttons Demo
             czekaj.until(ExpectedConditions.presenceOfElementLocated(By.linkText("Radio Buttons Demo"))).click();
