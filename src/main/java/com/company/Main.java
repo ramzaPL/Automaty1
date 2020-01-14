@@ -66,16 +66,19 @@ public class Main {
              driver.findElement(By.id("check1")).click();
 
         driver.navigate().back();*/
-    // $$$$$$$$$$$$$$$$$$$ opis dodany z pracy //////////////////////////
-        /// a ten z domu
         czekaj.until(ExpectedConditions.presenceOfElementLocated(By.id("basic_example"))).click();
         //Radio Buttons Demo
             czekaj.until(ExpectedConditions.presenceOfElementLocated(By.linkText("Radio Buttons Demo"))).click();
             //Radio Button Demo
             czekaj.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='easycont']/div/div[2]/div[1]/div[2]/label[1]/input"))).click();
             driver.findElement(By.id("buttoncheck")).click();
+            //if ()
+            String radioButtonDemo = driver.findElement(By.xpath("//*[@id=\"easycont\"]/div/div[2]/div[1]/div[2]/p[3]")).getText();
+            if (radioButtonDemo.equals("Radio button 'Male' is checked"))
+                System.out.println("Przycisk rbd1 - treść poprawna");
+            else
+                System.out.println("Przycisk rbd1 - treść błędna");
 
     }
-
 
 }
