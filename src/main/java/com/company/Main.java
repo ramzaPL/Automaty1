@@ -16,7 +16,10 @@ public class Main {
 
     public static void main(String[] args) throws InterruptedException {
         //Zmienne, parametry
-        System.setProperty("webdriver.chrome.driver", "D:\\Kurs Selenium\\chromedriver.exe");
+        //Domowy webdriver
+        //System.setProperty("webdriver.chrome.driver", "D:\\Kurs Selenium\\chromedriver.exe");
+        //Służbowy webdriver
+        System.setProperty("webdriver.chrome.driver", "C:\\Users\\pratlinski\\Documents\\chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         WebDriverWait czekaj = new WebDriverWait(driver, 10);
         Random losowa = new Random();
@@ -72,12 +75,23 @@ public class Main {
             //Radio Button Demo
             czekaj.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='easycont']/div/div[2]/div[1]/div[2]/label[1]/input"))).click();
             driver.findElement(By.id("buttoncheck")).click();
-            //if ()
             String radioButtonDemo = driver.findElement(By.xpath("//*[@id=\"easycont\"]/div/div[2]/div[1]/div[2]/p[3]")).getText();
-            if (radioButtonDemo.equals("Radio button 'Male' is checked"))
-                System.out.println("Przycisk rbd1 - treść poprawna");
-            else
-                System.out.println("Przycisk rbd1 - treść błędna");
+
+                if (radioButtonDemo.equals("Radio button 'Male' is checked"))
+                    System.out.println("Przycisk rbd1 - treść poprawna");
+                else
+                    System.out.println("Przycisk rbd1 - treść błędna");
+
+            czekaj.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id=\"easycont\"]/div/div[2]/div[1]/div[2]/label[2]"))).click();
+            driver.findElement(By.id("buttoncheck")).click();
+            radioButtonDemo = driver.findElement(By.xpath("//*[@id=\"easycont\"]/div/div[2]/div[1]/div[2]/p[3]")).getText();
+
+                if (radioButtonDemo.equals("Radio button 'Female' is checked"))
+                    System.out.println("Przycisk rbd1 - treść poprawna");
+                else
+                    System.out.println("Przycisk rbd1 - treść błędna");
+
+            //Group Radio Buttons Demo
 
     }
 
