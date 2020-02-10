@@ -98,12 +98,23 @@ public class Main {
         czekaj.until(ExpectedConditions.presenceOfElementLocated(By.id("basic_example"))).click();
         //Select Dropdown List
             czekaj.until(ExpectedConditions.presenceOfElementLocated(By.linkText("Select Dropdown List"))).click();
-            String dniTygodnia[] = {"Sunday"; "Monday"; "Tuesday"; "Wednesday"; "Thursday"; "Friday"; "Saturday";};
+            String[] dniTygodnia = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
             czekaj.until(ExpectedConditions.presenceOfElementLocated(By.id("select-demo")));
-            driver.findElement(By.id("select-demo")).
-                    //selectByVisibleText();
-
-
+            int  losowaLista = losowa.nextInt(7);
+            //System.out.println(losowyDzien);
+            Select wyborDnia = new Select(driver.findElement(By.id("select-demo")));
+            wyborDnia.selectByIndex(losowaLista);
+        //Multi Select List Demo
+            Select wyborMiasta = new Select(driver.findElement(By.id("multi-select")));
+            /*if (wyborMiasta.isMultiple())
+                System.out.println("Prawda");*/
+            wyborMiasta.selectByIndex(losowaLista);
+            losowaLista = losowa.nextInt(7);
+            wyborMiasta.selectByIndex(losowaLista);
+            losowaLista = losowa.nextInt(7);
+            wyborMiasta.selectByIndex(losowaLista);
+            //nie wyświetla wszystkich miast
+            driver.findElement(By.id("printAll")).click();
 
 
 
