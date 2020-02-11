@@ -21,7 +21,6 @@ public class Main {
         //System.setProperty("webdriver.chrome.driver", "D:\\Kurs Selenium\\chromedriver.exe");
         //Służbowy webdriver
         System.setProperty("webdriver.chrome.driver", "C:\\Users\\pratlinski\\Documents\\chromedriver.exe");
-        System.setProperty("webdriver.chrome.driver", "D:\\Kurs Selenium\\chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         WebDriverWait czekaj = new WebDriverWait(driver, 10);
         Random losowa = new Random();
@@ -99,7 +98,7 @@ public class Main {
             driver.findElement(By.xpath("//*[@id=\"easycont\"]/div/div[2]/div[2]/div[2]/button")).click();
 
             driver.navigate().back();*/
-        czekaj.until(ExpectedConditions.presenceOfElementLocated(By.id("basic_example"))).click();
+   /*       czekaj.until(ExpectedConditions.presenceOfElementLocated(By.id("basic_example"))).click();
         //Select Dropdown List
             czekaj.until(ExpectedConditions.presenceOfElementLocated(By.linkText("Select Dropdown List"))).click();
             String[] dniTygodnia = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
@@ -110,15 +109,36 @@ public class Main {
             wyborDnia.selectByIndex(losowaLista);
         //Multi Select List Demo
             Select wyborMiasta = new Select(driver.findElement(By.id("multi-select")));
-            /*if (wyborMiasta.isMultiple())
-                System.out.println("Prawda");*/
+            *//*if (wyborMiasta.isMultiple())
+                System.out.println("Prawda");*//*
             wyborMiasta.selectByIndex(losowaLista);
             losowaLista = losowa.nextInt(7);
             wyborMiasta.selectByIndex(losowaLista);
             losowaLista = losowa.nextInt(7);
             wyborMiasta.selectByIndex(losowaLista);
             //nie wyświetla wszystkich miast
-            driver.findElement(By.id("printAll")).click();
+            driver.findElement(By.id("printAll")).click();*/
+
+          /*  //driver.navigate().back();
+            czekaj.until(ExpectedConditions.presenceOfElementLocated(By.id("basic_example"))).click();
+        //Javascript Alerts
+            czekaj.until(ExpectedConditions.presenceOfElementLocated(By.linkText("Javascript Alerts"))).click();
+            //Java Script Alert Box
+            czekaj.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("#easycont > div > div.col-md-6.text-left > div:nth-child(4) > div.panel-body > button"))).click();
+            driver.switchTo().alert().accept();
+            //Java Script Confirm Box
+            driver.findElement(By.cssSelector("#easycont > div > div.col-md-6.text-left > div:nth-child(5) > div.panel-body > button")).click();
+            driver.switchTo().alert().dismiss();
+            System.out.println(driver.findElement(By.id("confirm-demo")).getText());
+            //Java Script Alert Box
+            driver.findElement(By.cssSelector("#easycont > div > div.col-md-6.text-left > div:nth-child(6) > div.panel-body > button")).click();
+            driver.switchTo().alert().sendKeys("Przemo");
+            driver.switchTo().alert().accept();*/
+
+            //driver.navigate().back();
+            czekaj.until(ExpectedConditions.presenceOfElementLocated(By.id("basic_example"))).click();
+        //Window Popup Modal
+            czekaj.until(ExpectedConditions.presenceOfElementLocated(By.linkText("Window Popup Modal"))).click();
 
 
 
