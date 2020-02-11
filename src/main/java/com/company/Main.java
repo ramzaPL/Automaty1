@@ -7,6 +7,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.Select;
 
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
@@ -20,6 +21,7 @@ public class Main {
         //System.setProperty("webdriver.chrome.driver", "D:\\Kurs Selenium\\chromedriver.exe");
         //Służbowy webdriver
         System.setProperty("webdriver.chrome.driver", "C:\\Users\\pratlinski\\Documents\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "D:\\Kurs Selenium\\chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         WebDriverWait czekaj = new WebDriverWait(driver, 10);
         Random losowa = new Random();
@@ -69,31 +71,56 @@ public class Main {
              driver.findElement(By.id("check1")).click();
 
         driver.navigate().back();*/
-        czekaj.until(ExpectedConditions.presenceOfElementLocated(By.id("basic_example"))).click();
+        /*czekaj.until(ExpectedConditions.presenceOfElementLocated(By.id("basic_example"))).click();
         //Radio Buttons Demo
             czekaj.until(ExpectedConditions.presenceOfElementLocated(By.linkText("Radio Buttons Demo"))).click();
             //Radio Button Demo
             czekaj.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='easycont']/div/div[2]/div[1]/div[2]/label[1]/input"))).click();
             driver.findElement(By.id("buttoncheck")).click();
+            //if ()
             String radioButtonDemo = driver.findElement(By.xpath("//*[@id=\"easycont\"]/div/div[2]/div[1]/div[2]/p[3]")).getText();
-
-                if (radioButtonDemo.equals("Radio button 'Male' is checked"))
-                    System.out.println("Przycisk rbd1 - treść poprawna");
-                else
-                    System.out.println("Przycisk rbd1 - treść błędna");
-
-            czekaj.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id=\"easycont\"]/div/div[2]/div[1]/div[2]/label[2]"))).click();
-            driver.findElement(By.id("buttoncheck")).click();
-            radioButtonDemo = driver.findElement(By.xpath("//*[@id=\"easycont\"]/div/div[2]/div[1]/div[2]/p[3]")).getText();
-
-                if (radioButtonDemo.equals("Radio button 'Female' is checked"))
-                    System.out.println("Przycisk rbd1 - treść poprawna");
-                else
-                    System.out.println("Przycisk rbd1 - treść błędna");
-
+            if (radioButtonDemo.equals("Radio button 'Male' is checked"))
+                System.out.println("Przycisk rbd1 - treść poprawna");
+            else
+                System.out.println("Przycisk rbd1 - treść błędna");
             //Group Radio Buttons Demo
+            int  losowaSex = losowa.nextInt(2);
+                if (losowaSex == 1)
+                     driver.findElement(By.xpath("//*[@id=\"easycont\"]/div/div[2]/div[2]/div[2]/div[1]/label[1]")).click();
+                else
+                     driver.findElement(By.xpath("//*[@id=\"easycont\"]/div/div[2]/div[2]/div[2]/div[1]/label[2]/input")).click();
+            int  losowaAgeGroup = losowa.nextInt(3);
+                if (losowaAgeGroup == 1)
+                    driver.findElement(By.xpath("//*[@id=\"easycont\"]/div/div[2]/div[2]/div[2]/div[2]/label[1]")).click();
+                if (losowaAgeGroup == 2)
+                    driver.findElement(By.xpath("//*[@id=\"easycont\"]/div/div[2]/div[2]/div[2]/div[2]/label[2]")).click();
+                else
+                    driver.findElement(By.xpath("//*[@id=\"easycont\"]/div/div[2]/div[2]/div[2]/div[2]/label[3]")).click();
+            driver.findElement(By.xpath("//*[@id=\"easycont\"]/div/div[2]/div[2]/div[2]/button")).click();
+
+            driver.navigate().back();*/
+        czekaj.until(ExpectedConditions.presenceOfElementLocated(By.id("basic_example"))).click();
+        //Select Dropdown List
+            czekaj.until(ExpectedConditions.presenceOfElementLocated(By.linkText("Select Dropdown List"))).click();
+            String[] dniTygodnia = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
+            czekaj.until(ExpectedConditions.presenceOfElementLocated(By.id("select-demo")));
+            int  losowaLista = losowa.nextInt(7);
+            //System.out.println(losowyDzien);
+            Select wyborDnia = new Select(driver.findElement(By.id("select-demo")));
+            wyborDnia.selectByIndex(losowaLista);
+        //Multi Select List Demo
+            Select wyborMiasta = new Select(driver.findElement(By.id("multi-select")));
+            /*if (wyborMiasta.isMultiple())
+                System.out.println("Prawda");*/
+            wyborMiasta.selectByIndex(losowaLista);
+            losowaLista = losowa.nextInt(7);
+            wyborMiasta.selectByIndex(losowaLista);
+            losowaLista = losowa.nextInt(7);
+            wyborMiasta.selectByIndex(losowaLista);
+            //nie wyświetla wszystkich miast
+            driver.findElement(By.id("printAll")).click();
+
 
 
     }
-
 }
