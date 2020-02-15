@@ -9,7 +9,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.support.ui.Select;
 
+import java.util.Iterator;
 import java.util.Random;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 
@@ -139,6 +141,40 @@ public class Main {
             czekaj.until(ExpectedConditions.presenceOfElementLocated(By.id("basic_example"))).click();
         //Window Popup Modal
             czekaj.until(ExpectedConditions.presenceOfElementLocated(By.linkText("Window Popup Modal"))).click();
+            //Single Window Popup
+            String aktualneOkno = driver.getWindowHandle();
+            driver.findElement(By.linkText("Follow On Twitter")).click();
+             for (String okna : driver.getWindowHandles())
+                {
+                     driver.switchTo().window(okna);
+                }
+             czekaj.until((ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id=\"follow-login-form\"]/fieldset[2]/input"))));
+             driver.close();
+             driver.findElement(By.linkText("Like us On Facebook")).click();
+             for (String okna : driver.getWindowHandles())
+                {
+                    driver.switchTo().window(okna);
+                }
+             czekaj.until((ExpectedConditions.presenceOfElementLocated(By.linkText("Facebook"))));
+             driver.close();
+
+//            driver.switchTo().window("");
+//
+//                driver.switchTo().window((String);
+
+//            Set<String> kolejneOkna = driver.getWindowHandles();
+//            driver.switchTo().window();
+//        Iterator<String> windowIterator = driver.getWindowHandles();
+
+     /*       Set beforePopup = driver.getWindowHandles();
+            driver.findElement(By.linkText("Follow On Twitter")).click();
+            czekaj.until((ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id=\"follow-login-form\"]/fieldset[2]/input"))));
+            Set afterPopup = driver.getWindowHandles();
+
+            afterPopup.removeAll(beforePopup);
+            driver.switchTo().window(String)afterPopup;
+            driver.close();*/
+
 
 
 
