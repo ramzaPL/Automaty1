@@ -150,13 +150,17 @@ public class Main {
                 }
              czekaj.until((ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id=\"follow-login-form\"]/fieldset[2]/input"))));
              driver.close();
-             driver.findElement(By.linkText("Like us On Facebook")).click();
+             driver.switchTo().window(aktualneOkno);
+             driver.findElement(By.xpath("/html/body/div[2]/div/div[2]/div[1]/div/div[2]/div[2]/a")).click();
              for (String okna : driver.getWindowHandles())
                 {
                     driver.switchTo().window(okna);
                 }
              czekaj.until((ExpectedConditions.presenceOfElementLocated(By.linkText("Facebook"))));
              driver.close();
+             driver.switchTo().window(aktualneOkno);
+             //Multiple Window Modal
+
 
 //            driver.switchTo().window("");
 //
