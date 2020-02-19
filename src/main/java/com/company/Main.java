@@ -144,22 +144,33 @@ public class Main {
             //Single Window Popup
             String aktualneOkno = driver.getWindowHandle();
             driver.findElement(By.linkText("Follow On Twitter")).click();
-             for (String okna : driver.getWindowHandles())
+            for (String okna : driver.getWindowHandles())
                 {
                      driver.switchTo().window(okna);
                 }
-             czekaj.until((ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id=\"follow-login-form\"]/fieldset[2]/input"))));
-             driver.close();
-             driver.switchTo().window(aktualneOkno);
-             driver.findElement(By.xpath("/html/body/div[2]/div/div[2]/div[1]/div/div[2]/div[2]/a")).click();
-             for (String okna : driver.getWindowHandles())
+            czekaj.until((ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id=\"follow-login-form\"]/fieldset[2]/input"))));
+            driver.close();
+            driver.switchTo().window(aktualneOkno);
+            driver.findElement(By.xpath("/html/body/div[2]/div/div[2]/div[1]/div/div[2]/div[2]/a")).click();
+            for (String okna : driver.getWindowHandles())
                 {
                     driver.switchTo().window(okna);
                 }
-             czekaj.until((ExpectedConditions.presenceOfElementLocated(By.linkText("Facebook"))));
-             driver.close();
-             driver.switchTo().window(aktualneOkno);
-             //Multiple Window Modal
+            czekaj.until((ExpectedConditions.presenceOfElementLocated(By.linkText("Facebook"))));
+            driver.close();
+            driver.switchTo().window(aktualneOkno);
+            //Multiple Window Modal
+            driver.findElement(By.linkText("Follow Twitter & Facebook")).click();
+            for (String okna : driver.getWindowHandles())
+            {
+                driver.switchTo().window(okna);
+                if (driver.getTitle().contains("Facebook"))
+                    driver.close();
+                else if (driver.getTitle().contains("Twitter"))
+                    driver.close();
+            }
+
+
 
 
 //            driver.switchTo().window("");
