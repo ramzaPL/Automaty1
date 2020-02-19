@@ -169,7 +169,19 @@ public class Main {
                 else if (driver.getTitle().contains("Twitter"))
                     driver.close();
             }
+             driver.switchTo().window(aktualneOkno);
+             driver.findElement(By.linkText("Follow All")).click();
+            for (String okna : driver.getWindowHandles())
+            {
+                driver.switchTo().window(okna);
+                if (driver.getTitle().contains("Facebook"))
+                    driver.close();
+                else if (driver.getTitle().contains("Twitter"))
+                    driver.close();
+                else if (driver.getTitle().contains("Google"))
+                    driver.close();
 
+            }
 
 
 
