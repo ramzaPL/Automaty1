@@ -154,7 +154,7 @@ public class Main {
             driver.findElement(By.xpath("/html/body/div[2]/div/div[2]/div[1]/div/div[2]/div[2]/a")).click();
             for (String okna : driver.getWindowHandles())
                 {
-                    driver.switchTo().window(okna);
+                    driver.switchTo().window(okna); 
                 }
             czekaj.until((ExpectedConditions.presenceOfElementLocated(By.linkText("Facebook"))));
             driver.close();
@@ -183,7 +183,7 @@ public class Main {
 
             }
 
-
+            	test use 
 
 //            driver.switchTo().window("");
 //
